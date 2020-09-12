@@ -12,7 +12,9 @@ interface IProps {
 
 export function MakeTransaction(props: IProps) {
    const { isOpen, onClose, onCompleted, onError } = props
-   const [create, response] = useCreateTransactions()
+   const [create1] = useCreateTransactions()
+   const [create2] = useCreateTransactions()
+   const [create3] = useCreateTransactions()
    const { register, handleSubmit, watch, errors, control } = useForm({
       defaultValues: {
          from: "andrios",
@@ -24,10 +26,20 @@ export function MakeTransaction(props: IProps) {
 
    const onSubmit = async (data: any) => {
       try {
-         await create({
-            ...data,
-            amount: parseInt(data.amount),
-         })
+         await Promise.all([
+            create1({
+               ...data,
+               amount: parseInt(data.amount),
+            }),
+            create2({
+               ...data,
+               amount: parseInt(data.amount),
+            }),
+            create3({
+               ...data,
+               amount: parseInt(data.amount),
+            }),
+         ])
 
          onCompleted()
       } catch (err) {
