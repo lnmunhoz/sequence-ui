@@ -1,7 +1,6 @@
-import { Input, Button, notification } from "antd"
+import { Button, Input, notification } from "antd"
 import React, { useState } from "react"
 import { useGetTransactions } from "./api"
-import "./App.css"
 import { MakeTransaction } from "./components/MakeTransaction"
 import { TransactionsList } from "./components/TransactionsList"
 
